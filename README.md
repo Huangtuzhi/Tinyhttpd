@@ -9,7 +9,6 @@ A tiny http server with multi-port monitoring.
 ├── LICENSE               #MIT许可证
 ├── README.md             #使用说明
 ├── tinyhttpd.pro         #工程文件
-#主程序
 ├── main.cpp              #启动多端口监听
 ├── serverthread.cpp      #QThread子类线程，设置IP，port及启动Server
 ├── server.cpp            #QTcpServer子类,多线程，每个线程对应一个port监听
@@ -20,7 +19,6 @@ A tiny http server with multi-port monitoring.
 ├── mime.cpp              #设定扩展应用
 ├── common.cpp            #获取当前时间
 ├── log.cpp               #日志系统
-#配置
 ├── httpstatus.h          #状态码
 ├── tinyhttpd.ini         #服务器配置文件
 ├── tinyhttpd.log         #服务器日志
@@ -45,8 +43,8 @@ A tiny http server with multi-port monitoring.
 
 ```
 [httpd]
-port=1234|1235|1236   #配置服务器监听的多个端口，用|隔开
-ipv6=true             #配置ipv6支持
+port=1234|1235|1236                #配置服务器监听的多个端口，用|隔开
+ipv6=true                          #配置ipv6支持
 logfile=tinyhttpd.log
 show_log=true
 
@@ -56,26 +54,27 @@ dir_listing=true                  #是否允许获取文件树，否则返回403
 #index="index.html", "index.htm"  #配置后，直接跳到网页index.html,不列出文件树
 
 [request]
-buffer_size=1048576        #为网页文件分配的内存空间
-keep_alive_enable=true     #是否打开长连接
+buffer_size=1048576               #为网页文件分配的内存空间
+keep_alive_enable=true            #是否打开长连接
 keep_alive_default=true
-keep_alive_timeout=30      #长连接timeout
+keep_alive_timeout=30             #长连接timeout
 keep_alive_timeout_max=300
 
 ```
 
 ##原理
 
-封装层次
+**封装层次**
 
+```
 Tinyhttpd
     |
 QTcpServer
     |                                      
 QTcpSocket                             
-             
+```             
 
-多线程模型
+**多线程模型**
 
 ```             
 
