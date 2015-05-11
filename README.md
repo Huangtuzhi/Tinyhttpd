@@ -78,14 +78,14 @@ QTcpSocket
 
 ```             
 
-                                  fork ┌──Request A
-                   ┌──Server(Port)—————├──Request B
-                   |                   └──Request C 
+                                    fork ┌──Request A
+                   ┌──Server(Port A)—————├──Request B
+                   |                     └──Request C 
               fork |                    
-  ServerThread—————├──Server(Port)...
+  ServerThread—————├──Server(Port B)...
                    |
                    |
-                   └──Server(Port)...
+                   └──Server(Port C)...
 
 ```
 
