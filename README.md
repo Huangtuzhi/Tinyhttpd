@@ -36,12 +36,12 @@ A tiny http server with multi-port monitoring.
 ```
 
 ##Todo
-+ 加入Redis数据库支持，存储访问数据
-+ 加入QT界面，显示实时连接情况
++ 加入Redis数据库支持，存储访问数据。
++ 加入QT界面，显示实时连接情况。配置服务器参数。
 
 ##运行环境
 + Linux/Mac OS X
-+ QT4/QT5
++ QT5
 
 ##使用
 
@@ -78,7 +78,7 @@ Tinyhttpd
 QTcpServer
     |                                      
 QTcpSocket                             
-```            
+```             
 
 多线程模型
 

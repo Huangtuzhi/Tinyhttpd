@@ -20,7 +20,7 @@ private:
     QTcpSocket* socket;
     bool keep_alive;
     int keep_alive_timeout;
-    QTimer keep_alive_timer;
+    QTimer* keep_alive_timer;
     QMap<QString, QString> request_header, response_header;
     int response_code;
     QString response_filename;

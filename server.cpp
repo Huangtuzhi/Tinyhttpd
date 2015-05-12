@@ -12,6 +12,6 @@ bool Server::start(QHostAddress address, int port)
 
 void Server::incomingConnection(qintptr socketDescriptor)
 {
-    Request* task = new Request(socketDescriptor);
-    task->start();
+    Request* request = new Request(socketDescriptor); //Constructor(timer.start) in old thread
+    request->start();
 }

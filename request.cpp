@@ -43,20 +43,11 @@ void Request::initialize()
 Request::Request(int socketDescriptor, QObject* parent):
     QThread(parent), response(NULL)
 {
+    //in old Server thread
     if (!s_initialized)
         initialize();
     this->socketDescriptor = socketDescriptor;
     connect(this, SIGNAL(finished()), this, SLOT(deleteLater()));
-
-    if (s_keep_alive_enable)
-    {
-        keep_alive = s_keep_alive_default;
-        keep_alive_timeout = s_keep_alive_timeout * 1000;
-        connect(&keep_alive_timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
-        keep_alive_timer.setSingleShot(true);
-        keep_alive_timer.setInterval(keep_alive_timeout);
-        keep_alive_timer.start();
-    }
 }
 
 void Request::clearStatus()
@@ -71,6 +62,17 @@ void Request::clearStatus()
 
 void Request::run()
 {
+    keep_alive_timer = new QTimer();
+    if (s_keep_alive_enable)
+    {
+        keep_alive = s_keep_alive_default;
+        keep_alive_timeout = s_keep_alive_timeout * 1000;// the wait time
+        connect(keep_alive_timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
+        keep_alive_timer->setSingleShot(true);
+        keep_alive_timer->setInterval(keep_alive_timeout);
+        keep_alive_timer->start();
+    }
+    //a new thread
     socket = new QTcpSocket();
     if (!socket->setSocketDescriptor(socketDescriptor))
         return;
@@ -111,9 +113,15 @@ bool Request::getRequestHeader()
         {
             //如果client发来的有长连接选项
             keep_alive = request_header["connection"].toLower() == "keep-alive";
-            if (request_header["connection"].contains("keep-alive"))
+            //如果client发来有keep-alive字段制定时间
+            if (request_header.contains("keep-alive"))
             {
-                keep_alive_timeout = s_keep_alive_timeout_max;
+                bool ok;
+                keep_alive_timeout = request_header["keep-alive"].toUInt(&ok);
+                if (!ok || keep_alive_timeout > s_keep_alive_timeout_max)
+                {
+                    keep_alive_timeout = s_keep_alive_timeout_max;
+                }
             }
         }
         else
@@ -200,7 +208,7 @@ void Request::onReadyRead()
 {
     if (!getRequestHeader())
         return;
-    keep_alive_timer.stop();
+    keep_alive_timer->stop();
 
     if (s_keep_alive_enable && keep_alive)
     {
@@ -229,8 +237,8 @@ void Request::onReadyRead()
     if (s_keep_alive_enable && keep_alive)
     {
         clearStatus();
-        keep_alive_timer.setInterval(keep_alive_timeout);
-        keep_alive_timer.start();
+        keep_alive_timer->setInterval(keep_alive_timeout);
+        keep_alive_timer->start();
     }
     else
     {
