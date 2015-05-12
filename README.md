@@ -72,12 +72,13 @@ keep_alive_timeout_max=300
 
 封装层次
 
+```
 Tinyhttpd
     |
 QTcpServer
     |                                      
 QTcpSocket                             
-             
+```            
 
 多线程模型
 
