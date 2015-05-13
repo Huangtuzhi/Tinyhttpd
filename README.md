@@ -82,12 +82,13 @@ keep_alive_timeout_max=300
 
 - 修改Redis配置文件`/etc/redis.conf`
 
-```
-daemonize yes
-```
+`daemonize yes`
+
 使Redis服务器运行在daemon模式
 
-运行`redis-server /etc/redis.conf`
+运行
+
+`redis-server /etc/redis.conf`
 
 ##原理
 
