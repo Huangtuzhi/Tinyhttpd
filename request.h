@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QStringList>
 #include <QTimer>
+#include <database.h>
 
 class Request: public QThread
 {
@@ -18,6 +19,9 @@ public:
 private:
     int socketDescriptor;
     QTcpSocket* socket;
+
+    Database* redis;
+
     bool keep_alive;
     int keep_alive_timeout;
     QTimer* keep_alive_timer;

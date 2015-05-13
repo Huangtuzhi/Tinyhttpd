@@ -3,6 +3,7 @@
 #include "responsedirectory.h"
 #include "log.h"
 #include "settings.h"
+#include "database.h"
 
 #include <QHostAddress>
 #include <QTextStream>
@@ -220,7 +221,7 @@ void Request::onReadyRead()
     }
 
     Log::instance()
-                << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss") + ' '
+                << QDateTime::currentDateTimeUtc().toLocalTime().toString("yyyy-MM-dd hh:mm:ss") + ' '
                 << '[' << socket->peerAddress().toString() << ']'
                 << ' ' << request_header["_method"] << ' '
                 << request_header["_path"] << ' ';
@@ -234,6 +235,15 @@ void Request::onReadyRead()
 
     response->response();
 
+    if (redis == NULL)
+    {
+        redis = new Database(6378);
+    }
+
+    redis->recordIP(response->getVistor(), \
+                    QDateTime::currentDateTimeUtc().toLocalTime().toString("yyyy-MM-dd hh:mm:ss").toLatin1().data(),\
+                    socket->peerAddress().toString().toLatin1().data(),\
+                    int(socket->peerPort()) );
     if (s_keep_alive_enable && keep_alive)
     {
         clearStatus();

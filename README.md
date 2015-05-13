@@ -36,12 +36,24 @@ A tiny http server with multi-port monitoring.
 ```
 
 ##Todo
-+ 加入Redis数据库支持，存储访问数据。
-+ 加入QT界面，显示实时连接情况。配置服务器参数。
+
+* <del>加入Redis数据库支持，存储访问数据</del>
+* 加入QT界面，配置服务器参数，显示实时连接情况
+* 尝试其它的进程模型：单线程或多线程
 
 ##运行环境
 + Linux/Mac OS X
-+ QT5
++ QT4/QT5
++ Redis
++ Hiredis
+
+```
+git clone https://github.com/antirez/hiredis.git && cd hiredis 
+make 
+sudo make install 
+sudo ldconfig
+```
+
 
 ##使用
 
@@ -68,17 +80,25 @@ keep_alive_timeout_max=300
 
 ```
 
+- 修改Redis配置文件`/etc/redis.conf`
+
+```
+daemonize yes
+```
+使Redis服务器运行在daemon模式
+
+运行`redis-server /etc/redis.conf`
+
 ##原理
 
 封装层次
 
-```
 Tinyhttpd
     |
 QTcpServer
     |                                      
 QTcpSocket                             
-```             
+             
 
 多线程模型
 

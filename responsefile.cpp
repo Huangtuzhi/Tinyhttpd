@@ -5,6 +5,7 @@
 
 bool ResponseFile::s_initialized = false;
 int ResponseFile::s_buffer_size = DEFAULT_REQUEST_BUFFER_SIZE;
+int ResponseFile::vistor = 0;
 
 void ResponseFile::initialize()
 {
@@ -44,5 +45,6 @@ void ResponseFile::response()
         m_socket->flush();
     }
     delete[] buffer;
+    incrVistor();
 }
 

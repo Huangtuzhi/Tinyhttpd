@@ -26,7 +26,8 @@ SOURCES +=\
     serverthread.cpp \
     common.cpp \
     log.cpp \
-    settings.cpp
+    settings.cpp \
+    database.cpp
 
 HEADERS  += \
     server.h \
@@ -39,7 +40,11 @@ HEADERS  += \
     mime.h \
     serverthread.h \
     log.h \
-    settings.h
+    settings.h \
+    database.h
 
 DISTFILES += \
     mime.txt
+
+LIBS += \
+    /usr/local/lib/libhiredis.so

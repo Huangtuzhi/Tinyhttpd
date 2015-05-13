@@ -3,6 +3,7 @@
 #include "request.h"
 #include "settings.h"
 #include "log.h"
+#include "database.h"
 #include <QtCore/QCoreApplication>
 #include <QDir>
 #include <QVariantList>
@@ -41,5 +42,7 @@ int main(int argc, char* argv[])
     if (!start())
         return -1;
 
+//    Database redis(6378);
+//    redis.recordIP("202.201.1.1", 80, "2015-5-13 10:40");
     return a.exec();
 }

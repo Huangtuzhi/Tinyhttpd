@@ -54,4 +54,3 @@ void Response::responseHeader()
     }
     m_socket->write("\r\n");
 }
-

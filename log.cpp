@@ -1,5 +1,5 @@
 #include "log.h"
-//#include "settings.h"
+#include "settings.h"
 #include <iostream>
 #include <fstream>
 #include <QMutex>
@@ -18,9 +18,8 @@ Log& Log::instance()
 
 Log::Log()
 {
-    //TODO
-    show_log = true;
-    QString filename("Tinyhttpd.log");
+    show_log = Settings::instance().value("httpd/show_log", true).toBool();
+    QString filename = Settings::instance().value("httpd/logfile", DEFAULT_HTTPD_LOGFILE).toString();
 
     if (filename != "")
     {
