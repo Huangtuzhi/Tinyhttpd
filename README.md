@@ -39,7 +39,7 @@ A tiny http server with multi-port monitoring.
 
 * <del>加入Redis数据库支持，存储访问数据</del>
 * 加入QT界面，配置服务器参数，显示实时连接情况
-* 尝试其它的进程模型：单线程或多线程
+* 尝试其它的进程模型:单线程或多线程
 
 ##运行环境
 + Linux/Mac OS X
@@ -93,12 +93,13 @@ daemonize yes
 
 封装层次
 
+```
 Tinyhttpd
     |
 QTcpServer
     |                                      
 QTcpSocket                             
-             
+```             
 
 多线程模型
 
