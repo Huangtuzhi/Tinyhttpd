@@ -20,11 +20,15 @@ A tiny http server with multi-port monitoring.
 ├── mime.cpp              #设定扩展应用
 ├── common.cpp            #获取当前时间
 ├── log.cpp               #日志系统
+├── database.cpp          #Redis数据库
+├── monitorui.cpp         #UI界面
+├── starter.cpp           #UI界面控制逻辑
 #配置
 ├── httpstatus.h          #状态码
 ├── tinyhttpd.ini         #服务器配置文件
 ├── tinyhttpd.log         #服务器日志
 ├── mime.txt              #mime配置
+├── monitorui.ui          #UI界面配置
 [www]                     #网站根目录
 ├──static
 ├──index.html
@@ -33,6 +37,12 @@ A tiny http server with multi-port monitoring.
 ├── 304.html              #304 Not Modified
 ├── 403.html              #403 Forbidden
 └── 404.html              #404 Not Found
+[resource] 
+├── black.png             #QT界面用到图片
+├── blue.png 
+[assets]           
+├── database.png          
+└── monitor.png
 ```
 
 ##Todo
