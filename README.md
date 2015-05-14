@@ -38,7 +38,9 @@ A tiny http server with multi-port monitoring.
 ##Todo
 
 * <del>加入Redis数据库支持，存储访问数据</del>
-* 加入QT界面，配置服务器参数，显示实时连接情况
+* <del>加入QT界面，显示服务器配置参数</del>
+* <del>界面逻辑中加入开始和停止</del>
+* 加入QT子界面，实现界面转换。显示实时连接情况
 * 尝试其它的进程模型:单线程或多线程
 
 ##运行环境
@@ -89,6 +91,16 @@ keep_alive_timeout_max=300
 运行
 
 `redis-server /etc/redis.conf`
+
+##界面
+
+QT运行界面
+
+![image](/assets/monitor.png)
+
+Redis数据
+
+![image](/assets/database.png)
 
 ##原理
 

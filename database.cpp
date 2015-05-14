@@ -12,7 +12,7 @@ Database::Database(int port, std::string ip): m_ip(ip), m_port(port)
 }
 
 
-void Database::recordIP(int vistor, std::string time, std::string ip, int port)
+void Database::recordIP(int vistor, std::string time, std::string ip, int port, std::string agent)
 {
     std::stringstream ss;
     std::string vistor_s;
@@ -21,7 +21,7 @@ void Database::recordIP(int vistor, std::string time, std::string ip, int port)
     std::string _vistor = std::string("vistor:") + vistor_s;
     std::cout << _vistor.data() << std::endl;
 
-    reply = (redisReply*)redisCommand(context, "HMSET %s time %s ip %s port %d", _vistor.data(), time.data(), ip.data(), port);
+    reply = (redisReply*)redisCommand(context, "HMSET %s time %s ip %s port %d agent %s", _vistor.data(), time.data(), ip.data(), port, agent.data());
     std::cout << "ERROE INFO: " << reply->str << std::endl;
     freeReplyObject(reply);
 }

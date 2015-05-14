@@ -4,13 +4,14 @@
 #
 #-------------------------------------------------
 
-QT       += core
+QT       += core gui
 QT       += network
-QT       -= gui
+QT       += widgets
 
 TARGET = tinyhttpd
-CONFIG   += console
 CONFIG   -= app_bundle
+CONFIG   += console
+CONFIG += c++11
 
 TEMPLATE = app
 
@@ -27,7 +28,9 @@ SOURCES +=\
     common.cpp \
     log.cpp \
     settings.cpp \
-    database.cpp
+    database.cpp \
+    monitorui.cpp \
+    starter.cpp
 
 HEADERS  += \
     server.h \
@@ -41,10 +44,18 @@ HEADERS  += \
     serverthread.h \
     log.h \
     settings.h \
-    database.h
+    database.h \
+    monitorui.h \
+    starter.h
 
 DISTFILES += \
     mime.txt
 
 LIBS += \
     /usr/local/lib/libhiredis.so
+
+FORMS += \
+    monitorui.ui
+
+RESOURCES += \
+    icon.qrc

@@ -243,7 +243,8 @@ void Request::onReadyRead()
     redis->recordIP(response->getVistor(), \
                     QDateTime::currentDateTimeUtc().toLocalTime().toString("yyyy-MM-dd hh:mm:ss").toLatin1().data(),\
                     socket->peerAddress().toString().toLatin1().data(),\
-                    int(socket->peerPort()) );
+                    int(socket->peerPort()), \
+                    request_header["user-agent"].toLatin1().data());
     if (s_keep_alive_enable && keep_alive)
     {
         clearStatus();
