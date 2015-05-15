@@ -59,8 +59,11 @@ A tiny http server with multi-port monitoring.
 ##运行环境
 + Linux/Mac OS X
 + QT4/QT5
-+ Redis
-+ Hiredis
++ Redis/Hiredis
+
+##使用
+
+- 安装Redis及Hiredis
 
 ```
 git clone https://github.com/antirez/hiredis.git && cd hiredis 
@@ -69,10 +72,7 @@ sudo make install
 sudo ldconfig
 ```
 
-
-##使用
-
-- 打开配置文件tinyhttpd.ini配置服务器选项。
+- 打开配置文件tinyhttpd.ini配置服务器选项
 
 ```
 [httpd]
@@ -97,13 +97,15 @@ keep_alive_timeout_max=300
 
 - 修改Redis配置文件`/etc/redis.conf`
 
-`daemonize yes`
+```
+daemonize yes
+```
 
 使Redis服务器运行在daemon模式
 
-运行
-
-`redis-server /etc/redis.conf`
+```
+redis-server /etc/redis.conf
+```
 
 ##界面
 
