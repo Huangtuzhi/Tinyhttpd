@@ -32,6 +32,5 @@ void ips::getData()
         text = text + "\n" + buffer;
     }
     ui->info->setText(text.data());
-    std::cout<<text;
 }
 
