@@ -2,6 +2,7 @@
 #define MONITORUI_H
 
 #include <QMainWindow>
+#include <ips.h>
 
 namespace Ui {
 class MonitorUI;
@@ -18,10 +19,12 @@ public:
 private slots:
     void on_pushButton_start_clicked();
     void on_pushButton_stop_clicked();
+    void on_pushButton_all_clicked(bool checked);
 
 private:
     Ui::MonitorUI *ui;
     QString ports;
+    ips *canvas;
 };
 
 #endif // MONITORUI_H

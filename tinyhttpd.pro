@@ -30,7 +30,8 @@ SOURCES +=\
     settings.cpp \
     database.cpp \
     monitorui.cpp \
-    starter.cpp
+    starter.cpp \
+    ips.cpp
 
 HEADERS  += \
     server.h \
@@ -46,7 +47,8 @@ HEADERS  += \
     settings.h \
     database.h \
     monitorui.h \
-    starter.h
+    starter.h \
+    ips.h
 
 DISTFILES += \
     mime.txt
@@ -55,7 +57,8 @@ LIBS += \
     /usr/local/lib/libhiredis.so
 
 FORMS += \
-    monitorui.ui
+    monitorui.ui \
+    ips.ui
 
 RESOURCES += \
     icon.qrc

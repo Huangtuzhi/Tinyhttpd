@@ -23,12 +23,14 @@ A tiny http server with multi-port monitoring.
 ├── database.cpp          #Redis数据库
 ├── monitorui.cpp         #UI界面
 ├── starter.cpp           #UI界面控制逻辑
+├── ips.cpp               #UI子界面控制逻辑
 #配置
 ├── httpstatus.h          #状态码
 ├── tinyhttpd.ini         #服务器配置文件
 ├── tinyhttpd.log         #服务器日志
 ├── mime.txt              #mime配置
 ├── monitorui.ui          #UI界面配置
+├── ip.ui                 #UI子界面配置
 [www]                     #网站根目录
 ├──static
 ├──index.html
@@ -42,7 +44,8 @@ A tiny http server with multi-port monitoring.
 ├── blue.png 
 [assets]           
 ├── database.png          
-└── monitor.png
+├── monitor.png
+└── ip.png
 ```
 
 ##Todo
@@ -50,7 +53,7 @@ A tiny http server with multi-port monitoring.
 * <del>加入Redis数据库支持，存储访问数据</del>
 * <del>加入QT界面，显示服务器配置参数</del>
 * <del>界面逻辑中加入开始和停止</del>
-* 加入QT子界面，实现界面转换。显示实时连接情况
+* <del>加入QT子界面，实现界面转换。显示实时连接情况</del>
 * 尝试其它的进程模型:单线程或多线程
 
 ##运行环境
@@ -108,7 +111,10 @@ QT运行界面
 
 ![image](/assets/monitor.png)
 
-Redis数据
+QT显示来访数据
+![image](/assets/ip.png)
+
+Redis存储数据
 
 ![image](/assets/database.png)
 

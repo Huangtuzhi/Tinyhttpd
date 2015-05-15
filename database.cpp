@@ -26,6 +26,27 @@ void Database::recordIP(int vistor, std::string time, std::string ip, int port, 
     freeReplyObject(reply);
 }
 
+std::string Database::readIP(int vistor)
+{
+    std::stringstream ss;
+    std::string vistor_s;
+    ss << vistor;
+    ss >> vistor_s;
+    std::string _vistor = std::string("vistor:") + vistor_s;
+
+    std::string buffer;
+    reply = (redisReply*)redisCommand(context, "HMGET %s time ip port", _vistor.data());
+    if (reply->type == REDIS_REPLY_ARRAY) {
+        if(reply->element[0]->str == NULL)
+            return "";
+
+        for (unsigned int j = 0; j < reply->elements; j++) {
+            buffer += std::string(reply->element[j]->str) + " ";
+        }
+    }
+    return buffer;
+}
+
 Database::~Database()
 {
     redisFree(context);

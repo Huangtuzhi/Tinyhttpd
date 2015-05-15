@@ -1,5 +1,7 @@
 #include "monitorui.h"
 #include "ui_monitorui.h"
+#include "ips.h"
+#include "ui_ips.h"
 #include <QApplication>
 #include <QDir>
 #include <QVariantList>

@@ -46,7 +46,6 @@ bool Starter::stop()
         t->exit();
         t->wait();
     }
-    std::cout << "here";
     return true;
 }
 

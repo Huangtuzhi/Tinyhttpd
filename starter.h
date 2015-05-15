@@ -5,6 +5,7 @@
 #include "settings.h"
 #include "log.h"
 #include "database.h"
+#include "iostream"
 
 #include "serverthread.h"
 
@@ -16,7 +17,6 @@ public:
     bool start();
     bool stop();
     QString getIPAddress();
-    ~Starter();
 
 private:
     static Starter* m_instance;

@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>resource/black.png</file>
         <file>resource/blue.png</file>
+        <file>resource/ip_normal.png</file>
+        <file>resource/ip_pressed.png</file>
+        <file>resource/bg.png</file>
     </qresource>
 </RCC>

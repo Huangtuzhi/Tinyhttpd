@@ -3,11 +3,13 @@
 #include "settings.h"
 #include "log.h"
 #include "database.h"
+#include "starter.h"
 
 #include "ui_monitorui.h"
 #include "monitorui.h"
 
-#include "starter.h"
+#include "ips.h"
+#include "ui_ips.h"
 
 
 MonitorUI::MonitorUI(QWidget *parent) :
@@ -25,19 +27,23 @@ MonitorUI::MonitorUI(QWidget *parent) :
 
     QString ip = Starter::instance().getIPAddress();
     ui->label_ipv->setText(ip);
+
+    canvas = new ips();
 }
 
 MonitorUI::~MonitorUI()
 {
     delete ui;
+    delete canvas;
 }
 
 void MonitorUI::on_pushButton_start_clicked()
 {
+    ui->pushButton_start->setDisabled(true);
     ui->label_blue->show();
     ui->label_black->hide();
     Log::instance() << APPLICATION_NAME << Log::NEWLINE << Log::FLUSH;
-    if (!Starter::instance().start())
+    if (!Starter::instance().start()) //a Singleton Pattern instance
         return;
 }
 
@@ -45,6 +51,19 @@ void MonitorUI::on_pushButton_stop_clicked()
 {
     ui->label_blue->hide();
     ui->label_black->show();
+    canvas->close();
     if (!Starter::instance().stop())
         return;
 }
+
+void MonitorUI::on_pushButton_all_clicked(bool checked)
+{
+    if (checked)
+    {
+        canvas->getData();
+        canvas->show();
+    }
+    else
+        canvas->hide();
+}
+

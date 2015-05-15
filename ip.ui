@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>canvas</class>
+ <widget class="QWidget" name="canvas">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>410</width>
+    <height>130</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">border-style: solid;
+border-width: 10px;
+border-top-color: rgba(0,0,0,0);
+border-bottom-color: qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0, stop: 0 rgba(0,0,0,80), stop: 1 rgba(0,0,0,0));
+border-left-color: rgba(0,0,0,0);
+border-right-color: rgba(0,0,0,0);
+background-color: rgb(15, 8, 8);</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
