@@ -1,6 +1,6 @@
 ##Tinyhttpd
 
-A tiny http server with multi-port monitoring.
+A tiny http server with multi-port monitoring. [![views](https://sourcegraph.com/api/repos/github.com/Huangtuzhi/Tinyhttpd/.counters/views.svg)](https://sourcegraph.com/github.com/Huangtuzhi/Tinyhttpd)
 
 ##目录结构
 
