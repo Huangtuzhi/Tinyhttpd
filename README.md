@@ -156,6 +156,6 @@ QTcpSocket
 
 + https://github.com/awwit/httpserver
 
-在BYVoid项目基础上进行更改，感谢项目作者。
+在项目基础上进行更改，感谢项目作者。
 
 具体细节参见博客[HTTP服务器实现](http://tuzhii.com/2015/05/09/httpserver)。
