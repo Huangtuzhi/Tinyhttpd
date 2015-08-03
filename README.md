@@ -1,5 +1,4 @@
-##Tinyhttpd [![views](https://sourcegraph.com/api/repos/github.com/Huangtuzhi/Tinyhttpd/.counters/views.svg)](https://sourcegraph.com/github.com/Huangtuzhi/Tinyhttpd)
-
+##Tinyhttpd 
 A tiny http server with multi-port monitoring. 
 
 
